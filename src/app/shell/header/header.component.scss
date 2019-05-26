@@ -7,3 +7,22 @@
 .nav-link.dropdown-toggle {
   cursor: pointer;
 }
+
+.Header-item {
+  align-self: stretch;
+  margin-right: 16px;
+}
+.header-link {
+  color: #fff;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.octicon {
+  display: inline-block;
+  fill: currentColor;
+}
+
+span.my-work {
+  padding: 0 1rem;
+}
