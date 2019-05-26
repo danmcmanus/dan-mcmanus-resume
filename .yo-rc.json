@@ -1,0 +1,20 @@
+{
+  "generator-ngx-rocket": {
+    "version": "6.1.0",
+    "props": {
+      "appName": "dan mcmanus resume",
+      "target": ["web"],
+      "pwa": false,
+      "ui": "bootstrap",
+      "auth": false,
+      "lazy": true,
+      "angulartics": false,
+      "tools": ["prettier", "hads", "compodoc"],
+      "utility": ["moment"],
+      "projectName": "dan-mcmanus-resume",
+      "packageManager": "npm",
+      "mobile": [],
+      "desktop": []
+    }
+  }
+}
