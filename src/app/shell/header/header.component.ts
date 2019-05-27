@@ -13,16 +13,25 @@ export class HeaderComponent implements OnInit {
   menuHidden = true;
   count: number;
   messages: string[] = [];
-  successMessage1: string;
-  successMessage2: string;
-  elementRef: ElementRef;
-  private _success = new Subject<string[]>();
-  constructor(private i18nService: I18nService, router: Router) {}
+  requestCancelled: boolean;
+  private _success: Subject<string[]>;
+  constructor(private i18nService: I18nService, private router: Router) {}
 
   ngOnInit() {
+    this.initializeSubject();
+  }
+
+  initializeSubject() {
+    this._success = new Subject<string[]>();
     this._success.subscribe(_messages => {
       this.messages = _messages;
     });
+  }
+
+  public cancel() {
+    this.messages = [];
+    this.requestCancelled = true;
+    this.count = 10;
   }
 
   public changeSuccessMessage() {
@@ -42,7 +51,12 @@ export class HeaderComponent implements OnInit {
         map(i => count - i - 1),
         startWith(count)
       )
-      .subscribe(x => (this.count = x));
+      .subscribe(x => {
+        this.count = x;
+        if (this.count === 0 && !this.requestCancelled) {
+          window.location.href = 'https://github.com/danmcmanus';
+        }
+      });
   }
 
   toggleMenu() {
